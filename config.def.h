@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -69,11 +69,12 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("$BROWSER") },
 	{ MODKEY,                       XK_Print,  spawn,          SHCMD("maim -s | xclip -selection clipboard -t image/png") },
-    { 0,              XF86XK_AudioMute,        spawn,          SHCMD("amixer -q -D pulse set Master toggle") },
-    { 0,              XF86XK_AudioRaiseVolume, spawn,          SHCMD("amixer -q -D pulse set Master 5%+ unmute") },
-    { 0,              XF86XK_AudioLowerVolume, spawn,          SHCMD("amixer -q -D pulse set Master 5%- unmute") },
-    { MODKEY,                       XK_a,       spawn,         SHCMD("TERMINAL -e pulsemixer") },
-    { MODKEY|ShiftMask,             XK_a,       spawn,         SHCMD("TERMINAL -e alsamixer") },
+    { 0,              XF86XK_AudioMute,        spawn,          SHCMD("pamixer -t") },
+    { 0,              XF86XK_AudioRaiseVolume, spawn,          SHCMD("pamixer -ui 2") },
+    { 0,              XF86XK_AudioLowerVolume, spawn,          SHCMD("pamixer -ud 2") },
+    { ShiftMask,        XF86XK_AudioMute,      spawn,          SHCMD("pamixer --default-source -t") },
+    { MODKEY,                       XK_a,      spawn,          SHCMD("$TERMINAL -e pulsemixer") },
+    { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("$TERMINAL -e alsamixer") },
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
