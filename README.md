@@ -6,3 +6,4 @@
 - autostart
 - attachaside
 - xresources
+- restartsig
