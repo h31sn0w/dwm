@@ -5,3 +5,4 @@
 - fullgaps
 - autostart
 - attachaside
+- xresources
