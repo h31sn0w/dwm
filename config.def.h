@@ -68,7 +68,7 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("$BROWSER") },
-	{ MODKEY,                       XK_Print,  spawn,          SHCMD("maim -s | xclip -selection clipboard -t image/png") },
+	{ 0,                        XK_Print,      spawn,          SHCMD("maim -s | xclip -selection clipboard -t image/png") },
     { 0,              XF86XK_AudioMute,        spawn,          SHCMD("pamixer -t") },
     { 0,              XF86XK_AudioRaiseVolume, spawn,          SHCMD("pamixer -ui 2") },
     { 0,              XF86XK_AudioLowerVolume, spawn,          SHCMD("pamixer -ud 2") },
